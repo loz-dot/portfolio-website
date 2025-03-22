@@ -1,0 +1,138 @@
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Make the entire page background black */
+body {
+    background-color: black;
+    color: #00ff00; /* Set text color to green for contrast */
+    font-family: Arial, sans-serif;
+}
+
+/* Background Container */
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+}
+
+.orbiting {
+    position: absolute;
+    width: 250px; /* Size of your images */
+    height: auto;
+    animation: orbit 60s linear infinite; /* Change duration as needed */
+    transform-origin: center center; /* Ensures rotation happens around the center of each image */
+}
+
+.orbiting1 {
+    position: absolute;
+    width: 200px; /* Size of your images */
+    height: auto;
+    animation: orbit1 180s linear infinite; /* Change duration as needed */
+    transform-origin: center center; /* Ensures rotation happens around the center of each image */
+}
+
+.orbiting2 {
+    position: absolute;
+    width: 300px; /* Size of your images */
+    height: auto;
+    animation: orbit2 40s linear infinite; /* Change duration as needed */
+    transform-origin: center center; /* Ensures rotation happens around the center of each image */
+}
+
+/* Animation for orbiting */
+@keyframes orbit {
+    0% { 
+        transform: rotate(0deg) translateX(100px) rotate(0deg); /* Start position */
+    }
+    100% { 
+        transform: rotate(360deg) translateX(100px) rotate(-360deg); /* End position (complete circle) */
+    }
+}
+
+/* Animation for orbiting */
+@keyframes orbit2 {
+    0% { 
+        transform: rotate(0deg) translateX(100px) translateY(0px) rotate(0deg); /* Start position */
+    }
+    100% { 
+        transform: rotate(360deg) translateX(100px)translateY(-200px) rotate(-360deg); /* End position (complete circle) */
+    }
+}
+
+/* Animation for orbiting */
+@keyframes orbit1 {
+    0% { 
+        transform: rotate(0deg) translateX(100px) translateY(100px) rotate(0deg); /* Start position */
+    }
+    25% { 
+        transform: rotate(90deg) translateX(50px) translateY(250px) rotate(-90deg); /* Move up-right */
+    }
+    50% { 
+        transform: rotate(180deg) translateX(0px) translateY(350px) rotate(-180deg); /* Topmost position */
+    }
+    75% { 
+        transform: rotate(270deg) translateX(-300px) translateY(100px) rotate(-270deg); /* Move down-left */
+    }
+    100% { 
+        transform: rotate(360deg) translateX(100px) translateY(100px) rotate(-360deg); /* End position (back to start) */
+    }
+}
+
+/* Positioning for each image */
+#image1 {
+    top: 10%;
+    left: 10%;
+    animation-duration: 15s;
+}
+
+#image2 {
+    top: 50%;
+    left: 70%;
+    animation-duration: 20s;
+}
+
+#image3 {
+    top: 60%;
+    left: 30%;
+    animation-duration: 25s; /* Different speeds */
+}
+
+/* Content Box Styling */
+.content-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background: black; 
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #00ff00;
+    z-index: 10;
+}
+
+/* Bio Text Styling */
+.bio h1 {
+    font-size: 24px;
+    color: #00ff00; /* Set title text color to green */
+}
+
+.bio p {
+    font-size: 16px;
+    color: #00ff00; /* Set paragraph text color to green */
+}
+
+.background-image {
+    background-size: cover;  /* Make the background image cover the entire page */
+    background-position: center;  /* Center the background image */
+    background-attachment: fixed;  /* Optional: Keep the background fixed during scrolling */
+    margin: 0;  /* Remove default margin */
+    height: 100vh;  /* Ensure the body takes up the full viewport height */
+}

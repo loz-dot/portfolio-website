@@ -1,0 +1,71 @@
+
+/* Global page background and layout */
+html, body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-image: url("jpg/windows.jpg");
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: block;  /* Remove flex here */
+}
+
+.title-container {
+    height: 130px;
+    width: 200px;
+    background: black;
+    color: #00ff00;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #00ff00;
+    z-index: 10;
+    margin: auto;
+}
+
+p {
+    font-size: 12px;
+    margin-top: 0;      /* Removes space before the paragraph */
+    margin-bottom: 3px; /* Adjust space after the paragraph */
+    padding: 0;         /* Removes any padding within the paragraph */
+}
+
+
+.terminal-container {
+    border: 2px solid #444;
+    border-radius: 10px;
+    background-color: #000;
+    width: 800px;
+    height: 400px;
+    margin: auto;
+}
+
+
+/* Optional styling for terminal header */
+.terminal-header {
+    height: 30px;
+    background-color: #222;   /* Dark background for header */
+    display: flex;
+    justify-content: flex-end; /* Position buttons on the right */
+}
+
+/* Style for the terminal buttons (e.g., minimize, maximize, close) */
+.terminal-header .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.terminal-header .buttons div {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ff3b30;  /* Example: Red for close button */
+}
+
+

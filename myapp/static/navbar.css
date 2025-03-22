@@ -1,0 +1,41 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Spaces out the navbar items */
+    align-items: center; /* Vertically centers the navbar items */
+    padding: 10px;
+    background-color: black; /* Ensures background is black */
+}
+
+/* Navbar links */
+.navbar a {
+    color: #00ff00; /* Green text color */
+    text-decoration: none; /* Removes underline */
+    margin: 10px;
+    font-size: 18px;
+}
+
+/* Social Media container */
+.social-media {
+    display: flex; /* Ensures icons are in a row */
+    justify-content: flex-end; /* Aligns the icons to the right */
+}
+
+/* Social Media Icons */
+.social-media a {
+    color: #00ff00; /* Green color for icons */
+    margin-left: 15px; /* Spacing between icons */
+    font-size: 24px; /* Icon size */
+    text-decoration: none; /* Removes underline */
+}
+
+/* Hover effect for social media icons */
+.social-media a:hover {
+    color: #ff6600; /* Change color when hovering */
+}
+
+.navbar a:hover {
+    text-shadow: 0 0 10px #00ff00;
+}
+
+

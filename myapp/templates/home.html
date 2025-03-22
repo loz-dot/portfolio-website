@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Portfolio</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="{% static 'script.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- navbar -->
+    <div class="navbar">
+        <a href="" class="home">HOME</a>
+        <a href="blog/" class="blog">BLOG</a>
+        <a href="projects/" class="apps">PROJECTS</a>
+        <a href="contact/" class="contact">CONTACT</a>
+        <div class="social-media">
+            <a href="https://facebook.com/yourprofile" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/yourprofile" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://instagram.com/yourprofile" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+
+     <!-- Moving Background -->
+    <div class="background">
+        <img src="{% static 'jpg/cybercore.jpg' %}" class="orbiting" id="image1">
+        <img src="{% static 'jpg/eye-see-you.jpg' %}" class="orbiting2" id="image2">
+        <img src="{% static 'jpg/tetlassova.jpg' %}" class="orbiting1" id="image3">
+    </div>
+
+    <div class="content-box">
+        <!-- Bio Section -->
+        <div class="bio">
+            <h1>Welcome to My Cyber World</h1>
+            <p>I'm a cybersecurity enthusiast and developer. This portfolio showcases my work.</p>
+        </div>
+    </div>
+
+</body>
+</html>

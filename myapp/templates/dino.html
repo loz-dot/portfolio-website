@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Terminal</title>
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'dino.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+</head>
+<body>
+    <!-- navbar -->
+    <div class="navbar">
+        <a href="/" class="home">HOME</a>
+        <a href="/blog/" class="blog">BLOG</a>
+        <a href="/projects/" class="apps">PROJECTS</a>
+        <a href="/contact/" class="contact">CONTACT</a>
+        <div class="social-media">
+            <a href="https://facebook.com/yourprofile" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/yourprofile" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="https://instagram.com/yourprofile" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <div class="title-container">
+        <h1>Dino Game</h1>
+        <p>To install and play the Dino Game in your terminal:</p>
+        <p>1. Run 'pip install dino_run_run_run'</p>
+        <p>2. Run 'dino_run_run_run'</p>
+        <p>Try it now in our terminal Simulator!</p>
+    </div>
+
+
+     <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="buttons">
+                <div class="red"></div>
+                <div class="yellow"></div>
+                <div class="green"></div>
+            </div>
+        </div>
+        <div id="terminal"></div>
+    </div>
+
+    <script src="{% static 'js/xterm.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var term = new Terminal({
+                cursorBlink: true,
+                theme: {
+                    background: "#000000", // Black background
+                    foreground: "#FFFFFF"
+                }
+            });
+
+            // Open the terminal inside the container
+            term.open(document.getElementById("terminal"));
+
+            const socket = new WebSocket("ws://localhost:8000/ws");
+
+            let inputBuffer = "";
+            let newline = "";
+            let gameStarted = false;
+
+            term.onData(data => {
+                if (data === "\r") {
+                    socket.send(inputBuffer.trim());
+                    inputBuffer = "";
+                    term.writeln(newline.trim());
+                    gameStarted = true;
+                } else if (data == '\u007F') {
+                    if (inputBuffer.length > 0) {
+                        inputBuffer = inputBuffer.slice(0, -1);  // Remove last character
+                        term.write("\b \b");  // Erase the last character in UI
+                    }
+                } else if (data === " " && gameStarted) {
+                    socket.send("_");
+                } else {
+                    term.write(data);
+                    inputBuffer += data;
+                }
+            })
+
+            socket.onmessage = event => {
+                if (event.data.trim() === "finished") {
+                    gameStarted = false;
+                } else {
+                    term.writeln(event.data.trim());
+                }
+            };
+
+            socket.onclose = () => {
+                term.writeln("\r\nConnection lost. Please refresh the page.");
+            };
+        });
+    </script>
+</body>
+</html>
